@@ -1,8 +1,8 @@
-package com.qyh.tpsofbd.controller;
+package com.qyh.tpsofbd.server.controller;
 
-import com.qyh.tpsofbd.config.ServerSettings;
-import com.qyh.tpsofbd.entity.User;
-import com.qyh.tpsofbd.service.UserInfoService;
+import com.qyh.tpsofbd.common.config.ServerSettings;
+import com.qyh.tpsofbd.server.entity.User;
+import com.qyh.tpsofbd.server.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

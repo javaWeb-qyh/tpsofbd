@@ -1,8 +1,8 @@
-package com.qyh.tpsofbd.service.impl;
+package com.qyh.tpsofbd.server.service.impl;
 
-import com.qyh.tpsofbd.dao.UserMapper;
-import com.qyh.tpsofbd.entity.User;
-import com.qyh.tpsofbd.service.UserInfoService;
+import com.qyh.tpsofbd.server.dao.UserMapper;
+import com.qyh.tpsofbd.server.entity.User;
+import com.qyh.tpsofbd.server.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

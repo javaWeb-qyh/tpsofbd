@@ -1,4 +1,4 @@
-package com.qyh.tpsofbd.entity;
+package com.qyh.tpsofbd.server.entity;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,12 +1,8 @@
-package com.qyh.tpsofbd.dao;
+package com.qyh.tpsofbd.server.dao;
 
-import com.qyh.tpsofbd.entity.User;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
+import com.qyh.tpsofbd.server.entity.User;
 import java.util.List;
 
-@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Long userId);
 

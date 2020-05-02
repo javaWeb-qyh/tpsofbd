@@ -72,7 +72,7 @@
         <!-- targetPackage：生成的实体类所在的包 -->
         <!-- targetProject：生成的实体类所在的硬盘位置 -->
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.qyh.tpsofbd.entity" targetProject="${models}" >
+        <javaModelGenerator targetPackage="com.qyh.tpsofbd.server.entity" targetProject="${models}" >
             <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为子包名 -->
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
@@ -83,7 +83,7 @@
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!-- 生成mapxml对应client，也就是接口dao -->
-        <javaClientGenerator targetPackage="com.qyh.tpsofbd.dao" targetProject="${dao}" type="XMLMAPPER" >
+        <javaClientGenerator targetPackage="com.qyh.tpsofbd.server.dao" targetProject="${dao}" type="XMLMAPPER" >
             <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为字包名 -->
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
