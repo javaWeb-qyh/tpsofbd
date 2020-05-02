@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyh.tpsofbd.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.qyh.tpsofbd.entity.User">
+    <!-- 帐号的id -->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <!-- 用户的姓名 -->
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <!-- 用户状态 0 正常 1停用 -->
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <!-- 用户的邮箱 邮箱的规则 -->
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <!-- 用户的手机 手机的规则 -->
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <!-- 描述信息 -->
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <!-- 所在部门名称 -->
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <!-- 创建时间 -->
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <!-- 更新时间 -->
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert">
+    insert into user (user_id, user_name, status, 
+      email, phone, description, 
+      department_name, gmt_create, gmt_modified
+      )
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{departmentName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select user_id, user_name, status, email, phone, description, department_name, gmt_create, 
+    gmt_modified
+    from user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select user_id, user_name, status, email, phone, description, department_name, gmt_create, 
+    gmt_modified
+    from user
+  </select>
+  
+</mapper>
