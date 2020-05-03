@@ -1,7 +1,6 @@
 package com.qyh.tpsofbd.server.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.qyh.tpsofbd.sdk.common.PlatformResult;
 import com.qyh.tpsofbd.sdk.common.RequestPageVo;
 import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
@@ -16,11 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.Null;
 import java.util.List;
-
-import static com.qyh.tpsofbd.sdk.common.PlatformResult.success;
-import static com.qyh.tpsofbd.sdk.common.ResponsePageVo.response;
 
 @Service
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
@@ -48,7 +43,6 @@ public class UserInfoServiceImpl implements UserInfoService {
         PageHelper.startPage(pageNo, pageSize);
         List<User> users = userMapper.selectPage();
         long totalSize=users.size();
-//        ResponsePageVo<User> responsePageVo= ResponsePageVo.response(totalSize,users);
         return PlatformResult.success(users,totalSize);
     }
 

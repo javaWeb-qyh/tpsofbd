@@ -26,6 +26,8 @@
         <joda.time.version>2.9.9</joda.time.version>
         <fastjson.version>1.2.62</fastjson.version>
         <spring.pagehelper.version>1.2.5</spring.pagehelper.version>
+        <springfox.version>2.9.2</springfox.version>
+        <springfox.ui.version>2.9.2</springfox.ui.version>
     </properties>
 
     <dependencies>
@@ -107,6 +109,20 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${spring.pagehelper.version}</version>
         </dependency>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.ui.version}</version>
+        </dependency>
+
     </dependencies>
 
 
