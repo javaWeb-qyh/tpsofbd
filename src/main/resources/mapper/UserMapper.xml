@@ -58,5 +58,11 @@
     gmt_modified
     from user
   </select>
-  
+
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select user_id, user_name, status, email, phone, description, department_name, gmt_create,
+    gmt_modified
+    from user
+  </select>
 </mapper>

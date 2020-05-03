@@ -1,5 +1,10 @@
 package com.qyh.tpsofbd.server.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.qyh.tpsofbd.sdk.common.PlatformResult;
+import com.qyh.tpsofbd.sdk.common.RequestPageVo;
+import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
 import com.qyh.tpsofbd.server.dao.UserMapper;
 import com.qyh.tpsofbd.server.entity.User;
 import com.qyh.tpsofbd.server.service.UserInfoService;
@@ -10,6 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.validation.constraints.Null;
+import java.util.List;
+
+import static com.qyh.tpsofbd.sdk.common.PlatformResult.success;
+import static com.qyh.tpsofbd.sdk.common.ResponsePageVo.response;
 
 @Service
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
@@ -29,4 +40,16 @@ public class UserInfoServiceImpl implements UserInfoService {
         User user=userMapper.selectByPrimaryKey(id);
         return user;
     }
+
+    @Override
+    public PlatformResult<ResponsePageVo<User>> findPage(RequestPageVo requestPageVo) {
+        int pageNo = requestPageVo.getPageNo();
+        int pageSize = requestPageVo.getPageSize();
+        PageHelper.startPage(pageNo, pageSize);
+        List<User> users = userMapper.selectPage();
+        long totalSize=users.size();
+//        ResponsePageVo<User> responsePageVo= ResponsePageVo.response(totalSize,users);
+        return PlatformResult.success(users,totalSize);
+    }
+
 }

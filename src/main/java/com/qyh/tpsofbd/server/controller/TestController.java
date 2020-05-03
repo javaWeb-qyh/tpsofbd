@@ -1,6 +1,9 @@
 package com.qyh.tpsofbd.server.controller;
 
 import com.qyh.tpsofbd.common.config.ServerSettings;
+import com.qyh.tpsofbd.sdk.common.PlatformResult;
+import com.qyh.tpsofbd.sdk.common.RequestPageVo;
+import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
 import com.qyh.tpsofbd.server.entity.User;
 import com.qyh.tpsofbd.server.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +49,7 @@ public class TestController {
     @GetMapping("/mybatis")
     public Object testMybatis(){
 
-       User user= userInfoService.selectUser(1);
-        return user;
+        RequestPageVo requestPageVo=new RequestPageVo(5,2);
+        return userInfoService.findPage(requestPageVo);
     }
 }
