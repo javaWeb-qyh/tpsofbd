@@ -6,6 +6,8 @@ import com.qyh.tpsofbd.sdk.common.RequestPageVo;
 import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
 import com.qyh.tpsofbd.server.entity.User;
 import com.qyh.tpsofbd.server.service.UserInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,8 @@ public class TestController {
         return serverSettings;
     }
 
+    @ApiOperation(value = "测试接口",notes = "传入字符串",httpMethod = "GET")
+    @ApiImplicitParam(dataType = "string",name = "str",value = "字符串",required = true)
     @GetMapping("/mybatis")
     public Object testMybatis(){
 
