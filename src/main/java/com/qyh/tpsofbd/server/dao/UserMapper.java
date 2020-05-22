@@ -10,22 +10,9 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Long userId);
 
-    int updateByPrimaryKey(User record);
-
-    /**
-     * @Description: 
-     * 查询全部用户
-     * @Author: qyh
-     * @Date: 2020/5/3 20:01
-     */
     List<User> selectAll();
 
-    /**
-     * @Description: 
-     * 分页查询用户
-     * @Author: qyh
-     * @Date: 2020/5/3 20:02
-     */
+    int updateByPrimaryKey(User record);
+
     List<User> selectPage();
-    
 }

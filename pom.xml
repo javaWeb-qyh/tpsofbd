@@ -125,11 +125,6 @@
 
     </dependencies>
 
-
-
-
-
-
     <build>
         <plugins>
             <plugin>
@@ -137,6 +132,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
+            <!--进行maven打包时要把mybatis的插件注释掉-->
             <!--添加mybatis generator maven插件-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

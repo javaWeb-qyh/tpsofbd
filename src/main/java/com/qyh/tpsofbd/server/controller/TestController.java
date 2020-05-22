@@ -53,6 +53,7 @@ public class TestController {
     @GetMapping("/mybatis")
     public Object testMybatis(){
 
+        int i=1/0;
         RequestPageVo requestPageVo=new RequestPageVo(5,2);
         return userInfoService.findPage(requestPageVo);
     }
