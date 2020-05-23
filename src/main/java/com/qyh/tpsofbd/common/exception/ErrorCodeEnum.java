@@ -11,6 +11,7 @@ package com.qyh.tpsofbd.common.exception;
  */
 public enum ErrorCodeEnum {
 
+    //异常码作用:不对外暴露异常信息
     // 平台通用异常码以10000开头
     SYS_ERROR("100000000", "系统错误"),
     SYS_DB_OPER_ERROR("100000001", "数据库操作失败"),
@@ -309,16 +310,16 @@ public enum ErrorCodeEnum {
     OSI_TASK_RECORD("108010002","没找到指定任务记录"),
     OSI_NOMEND_TASK("108010003","整改测试任务失败,有测试项未整改"),
     OSI_NOMEND_TASK_STATUS("108010004","整改测试任务失败,任务状态未在整改中"),
-    OSI_NOINFORMMEND_TASK("108010005","通知整改测试任务失败,任务未执行完毕"),
+    OSI_NOINFORMMEND_TASK("108010005","通知整改测试任务失败,任务未执行完毕");
 
-    ;
+
     private String code;
 
-    private String message;
+    private String msg;
 
-    ErrorCodeEnum(String code, String message) {
+    ErrorCodeEnum(String code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
 
     }
 
@@ -326,7 +327,7 @@ public enum ErrorCodeEnum {
         return code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 }

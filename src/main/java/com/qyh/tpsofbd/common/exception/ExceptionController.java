@@ -19,14 +19,28 @@ public class ExceptionController {
 
     private static final Logger LOG=LoggerFactory.getLogger(ExceptionController.class);
 
-    @ExceptionHandler
+    @ExceptionHandler(value=Exception.class)
     Object handleException(Exception e, HttpServletRequest request){
-        LOG.error("url:{},trace:{}",request.getRequestURL(),e.getStackTrace());
+        LOG.error("url:{},\nmsg:{},\ntrace:{}",request.getRequestURL(),e.getMessage(),e.getStackTrace());
         Map<String,Object> map=new HashMap<>();
-        map.put("code",100);
-        map.put("msg",e.getMessage());
+        map.put("success","1");
+        //系统异常码默认为100000000
+        map.put("code",100000000);
         map.put("url",request.getRequestURL());
+        map.put("msg",e.getMessage());
         return map;
     }
 
+    @ExceptionHandler(value=BusinessException.class)
+    Object handleBusinessException(BusinessException e, HttpServletRequest request){
+        LOG.error("url:{},\nmsg:{},\ntrace:{}",request.getRequestURL(),e.getErrorCodeEnum().getMsg(),e.getStackTrace());
+        Map<String,Object> map=new HashMap<>();
+        map.put("success","1");
+        map.put("code",e.getErrorCodeEnum().getCode());
+        map.put("url",request.getRequestURL());
+        map.put("msg",e.getErrorCodeEnum().getMsg());
+
+
+        return map;
+    }
 }
