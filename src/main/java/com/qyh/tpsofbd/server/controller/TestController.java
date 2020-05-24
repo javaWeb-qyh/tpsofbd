@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/test")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TestController {
 
@@ -62,5 +62,13 @@ public class TestController {
         }
         RequestPageVo requestPageVo = new RequestPageVo(5, 2);
         return userInfoService.findPage(requestPageVo);
+    }
+
+    @GetMapping("/listener")
+    public Object testListener() {
+
+        System.out.println("=========controller处理中========");
+
+        return userInfoService.selectUser(1L);
     }
 }

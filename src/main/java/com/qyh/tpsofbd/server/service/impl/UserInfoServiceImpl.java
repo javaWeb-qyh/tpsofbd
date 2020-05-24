@@ -30,10 +30,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     private final UserMapper userMapper;
 
     @Override
-    public User selectUser(long id) {
+    public PlatformResult<User> selectUser(long id) {
 
         User user=userMapper.selectByPrimaryKey(id);
-        return user;
+        return PlatformResult.success(user);
     }
 
     @Override

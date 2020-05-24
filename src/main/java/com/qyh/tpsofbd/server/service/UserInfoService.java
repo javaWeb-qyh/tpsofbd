@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserInfoService {
 
-    User selectUser(long id);
+    PlatformResult<User> selectUser(long id);
 
     /**
      * @Description:
