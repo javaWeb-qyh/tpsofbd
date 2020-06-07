@@ -5,8 +5,6 @@ import com.qyh.tpsofbd.sdk.common.RequestPageVo;
 import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
 import com.qyh.tpsofbd.server.entity.User;
 
-import java.util.List;
-
 public interface UserInfoService {
 
     PlatformResult<User> selectUser(long id);

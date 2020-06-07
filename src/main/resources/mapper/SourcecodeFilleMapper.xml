@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyh.tpsofbd.server.dao.SourcecodeFilleMapper">
+  <resultMap id="BaseResultMap" type="com.qyh.tpsofbd.server.entity.SourcecodeFille">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sourcecode_fill_url" jdbcType="VARCHAR" property="sourcecodeFillUrl" />
+    <result column="download_count" jdbcType="BIGINT" property="downloadCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sourcecode_fille
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sourcecode_fille (name, sourcecode_fill_url, download_count, 
+      create_time, update_time)
+    values (#{name,jdbcType=VARCHAR}, #{sourcecodeFillUrl,jdbcType=VARCHAR}, #{downloadCount,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey">
+    update sourcecode_fille
+    set name = #{name,jdbcType=VARCHAR},
+      sourcecode_fill_url = #{sourcecodeFillUrl,jdbcType=VARCHAR},
+      download_count = #{downloadCount,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, sourcecode_fill_url, download_count, create_time, update_time
+    from sourcecode_fille
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, sourcecode_fill_url, download_count, create_time, update_time
+    from sourcecode_fille
+  </select>
+  
+</mapper>

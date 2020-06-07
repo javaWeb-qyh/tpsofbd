@@ -30,7 +30,6 @@
 
         <!--model类生成toString()方法-->
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->
-
         <!-- 分页相关 -->
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
         <!-- 带上序列化接口 -->
@@ -88,7 +87,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
-        <!--如果想生成一个表则tableName="table_name"-->
+        <!--如果想生成一个表则tableName="table_name",当表字段有变动需要重新生成时,可使用此方式-->
         <!--<table tableName="my_user" domainObjectName="UserDO"-->
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->

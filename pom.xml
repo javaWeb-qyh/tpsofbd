@@ -131,7 +131,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
+            <!--执行mybatis插件时,必须手动先手动删除已存在的mapper.xml文件-->
             <!--进行maven打包时要把mybatis的插件注释掉-->
             <!--添加mybatis generator maven插件-->
             <plugin>

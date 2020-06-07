@@ -1,12 +1,7 @@
 package com.qyh.tpsofbd.server.controller;
 
 import com.qyh.tpsofbd.common.config.ServerSettings;
-import com.qyh.tpsofbd.common.exception.BusinessException;
-import com.qyh.tpsofbd.common.exception.ErrorCodeEnum;
-import com.qyh.tpsofbd.sdk.common.PlatformResult;
 import com.qyh.tpsofbd.sdk.common.RequestPageVo;
-import com.qyh.tpsofbd.sdk.common.ResponsePageVo;
-import com.qyh.tpsofbd.server.entity.User;
 import com.qyh.tpsofbd.server.service.UserInfoService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -71,4 +66,6 @@ public class TestController {
 
         return userInfoService.selectUser(1L);
     }
+
+
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyh.tpsofbd.server.dao.ResourceMapper">
+  <resultMap id="BaseResultMap" type="com.qyh.tpsofbd.server.entity.Resource">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <!-- 资源名称 -->
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <!-- 资源展示背景图url -->
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="markdown_file_id" jdbcType="BIGINT" property="markdownFileId" />
+    <result column="sourcecode_fille_id" jdbcType="BIGINT" property="sourcecodeFilleId" />
+    <!-- 收藏数 -->
+    <result column="star_count" jdbcType="BIGINT" property="starCount" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from resource
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into resource (name, image_url, create_time, 
+      update_time, category_id, markdown_file_id, 
+      sourcecode_fille_id, star_count)
+    values (#{name,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{categoryId,jdbcType=BIGINT}, #{markdownFileId,jdbcType=BIGINT}, 
+      #{sourcecodeFilleId,jdbcType=BIGINT}, #{starCount,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey">
+    update resource
+    set name = #{name,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      category_id = #{categoryId,jdbcType=BIGINT},
+      markdown_file_id = #{markdownFileId,jdbcType=BIGINT},
+      sourcecode_fille_id = #{sourcecodeFilleId,jdbcType=BIGINT},
+      star_count = #{starCount,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, image_url, create_time, update_time, category_id, markdown_file_id, 
+    sourcecode_fille_id, star_count
+    from resource
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, image_url, create_time, update_time, category_id, markdown_file_id, 
+    sourcecode_fille_id, star_count
+    from resource
+  </select>
+  
+</mapper>
